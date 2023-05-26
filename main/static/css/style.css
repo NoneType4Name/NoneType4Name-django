@@ -1,0 +1,156 @@
+@font-face {
+    font-family: "Cascadia Code";
+    src: url('https://fonts.cdnfonts.com/css/cascadia-code');
+}
+
+* {
+    margin: 0;
+    font-family: 'Cascadia Code';
+    color: #fff;
+}
+
+body{
+    background-color: #000;
+    overflow: overlay;
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+    width: 1vw;
+  }
+  
+::-webkit-scrollbar-track {
+    background: #ffffff00;
+  }
+  
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #000, #000, #513397, #513397);
+    border-radius: 20px;
+    /* border: 3px solid #ff0303; */
+}
+
+
+
+div#intro{
+    width: 100%;
+    height: 100vh;
+    background-color: #513397;
+}
+
+#intro * {
+    white-space:pre-wrap;
+    position: relative;
+    /* background-color: #000; */
+}
+
+#intro h1{
+    color: rgba(255, 255, 255);
+    top: 15%; 
+    left: 15%; 
+    font-size: 45px;
+    width: 85%;
+}
+
+#intro h2{
+    color: rgba(255, 255, 255);
+    top: 20%;
+    left: 40%;
+    font-size: 25px;
+    width: 60%;
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width: 760px) and (max-height: 900px) {    
+    #intro h1{
+        top: 50%; 
+        left: 50%;
+        width:auto;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        /* font-size: 40px; */
+    }
+    
+    #intro h2{
+        /* top: 0.5vh; */
+        /* left: 8%; */
+        /* width: 92%; */
+        font-size: 0px;
+        /* transform: translateY(-50%); */
+    }
+}
+
+
+#self * {
+    /* position: relative; */
+    color: #fff;
+}
+
+#self h3 {
+    text-align: center;
+    margin-top: 5%;
+    left: 50vw;
+}
+
+#self div{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* display:block; */
+    margin-top: 1%;
+    /* margin-left: 50%; */
+    /* justify-content: space-between; */
+}
+
+#self div div {
+    /* position: absolute;
+    display: inline-block; */
+    width: 500px;
+    height: 100px;
+    margin-left: 200px;
+    margin-right: 200px;
+    /* margin-right: 50px; */
+    box-shadow: 0px 0px 20px #fff;
+    border-radius: 5px;
+
+}
+
+#stats {
+    color: #fff;
+}
+
+#stats h2{
+    font-size: 30px;
+}
+/*
+@media screen and (max-width: 480px) and (max-height: 900px){   
+    #intro h1{
+        top: 10%; 
+        left: 10%;
+        width: 90%;
+        font-size: 15px;
+    }
+    
+    #intro h2{
+        top: 20%;
+        left: 10%;
+        width: 90%;
+        font-size: 11px;
+    }
+} */
+
+
+@keyframes typewriter{
+    from{width: 0%;}
+    to{width: 100%;}
+}
+  /* @keyframes blinkTextCursor{
+    from{border-right-color: rgba(255,255,255,.75);}
+    to{border-right-color: transparent;}
+  } */
+
+@keyframes blink{
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+}
+
+
