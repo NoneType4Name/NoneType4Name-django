@@ -1,11 +1,18 @@
+:root{
+    --background-color:#000000
+}
 * {
     margin: 0;
     font-family: 'Cascadia Code';
     color: #fff;
+    cursor:default;
+    ::selection {
+        background-color: #513397; 
+     }
 }
 
 body{
-    background-color: #000000;
+    background-color: var(--background-color);
     overflow: overlay;
 }
 
@@ -19,7 +26,7 @@ body{
   }
   
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(0deg, #000, #513397, #513397);
+    background: linear-gradient(0deg, var(--background-color), #513397, #513397);
     border-radius: 20px;
     /* border: 3px solid #ff0303; */
 }
@@ -30,12 +37,15 @@ div#intro{
     width: 100%;
     height: 100vh;
     background-color: #513397;
+    ::selection {
+        background-color: var(--background-color); 
+        text-shadow: 0px 0px 15px #ff0000;
+     }
 }
 
 #intro * {
     white-space:pre-wrap;
     position: relative;
-    /* background-color: #000; */
 }
 
 #intro h1{
@@ -62,7 +72,6 @@ div#intro{
         width:auto;
         transform: translate(-50%, -50%);
         text-align: center;
-        /* font-size: 40px; */
     }
     
     #intro h2{
@@ -74,25 +83,115 @@ div#intro{
     }
 }
 
-
-#self * {
-    color: #fff;
+div#skils{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    /* background: linear-gradient(to bottom, #513397, 0%, var(--background-color) 100%); */
 }
 
-#self h2 {
-    text-align: center;
-    margin-top: 5%;
-    left: 50vw;
+
+#skils h2{
+    margin-bottom: 15px;
+}
+
+#skils table{
+    width: 30%;
+    border-collapse: collapse;
+    border: 2px solid var(--background-color);
+}
+
+#skils th{
+    width: 50%;
+    border-bottom: #fff solid 1px;
+    font-size: 28px;
+}
+
+#skils th:hover{
+    background-color: #7246d8;
+    border-radius: 10px 10px 0 0;
+    ::selection{
+        background-color: var(--background-color); 
+    }
+}
+
+#skils td{
+    border-bottom: #1eff00 solid 1px;
+    border-right: #ffffff solid 1px;
+    text-indent: 5%;
+    font-size: 23px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+#skils td:hover{
+    background-color: #3f1a96;
+    box-shadow: 0px 0px 20px #7246d8;
+    ::selection{
+        background-color: var(--background-color); 
+    }
+}
+
+#skils ul{
+    list-style: none;
+}
+
+#skils li{
+    float: left;
+    margin-right: 10px;
+
+}
+#skils li::after{
+    content: ';';
+}
+
+/* #skils ul{
+    list-style: none;
+    overflow: auto;
+}
+
+#skils li ul{
+    list-style: ' └──';
+}
+
+#skils li ul li{
+    float: unset;
+}
+
+@property --tag-depth {
+    syntax: "<integer>";
+    inherits: true;
+    initial-value: 0;
+}
+
+#skils li{
+    font-size: 24px;
+    margin-right: 10px;
+    /* --tag-depth: calc((--tag-depth) + 1);
+    margin-top: calc(10px * var(--tag-depth)); */
+    /* margin-top: 10px */
+/* } */
+
+
+
+div#self{
+    margin-top: 10rem;
 }
 
 #self div{
     display: flex;
     justify-content: center;
-    margin-top: 1%;
+    flex-wrap: wrap;
+}
+
+#self h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    left: 50vw;
 }
 
 #self div div{
-    background-color: #000000;
+    background-color: #222222;
     justify-content: normal;
     display: flex;
     flex-direction: column;
@@ -108,10 +207,13 @@ div#intro{
     border-radius: 10px;
 }
 
+#self div * {
+    cursor: pointer;
+}
+
 #self div div:hover{
     border: #fff solid 1px;
     box-shadow: 0px 0px 30px #fff;
-    cursor: pointer;
 }
 
 #self div div h3{
@@ -120,41 +222,78 @@ div#intro{
     margin-left: 3%; */
 }
 
-#self div div p{
+/* #self div div p{
     font-weight: 300;
     margin-top: 10px;
-}
+} */
 
 #self div div div{
-    /* margin-top: 10px; */
-    display: flex;
-    flex-direction: row;
+    background-color: #ffffff00;
+    padding: 0px;
     width: auto;
     height: auto;
+    flex-direction: row;
     box-shadow: none;
     border: none;
     border-radius: 0px;
-    margin: 0;
+    margin: 0px;
 }
 
-#self div div div svg{
-    fill: rgb(108, 4, 156);
+#self div div div:hover{
+    border: none;
+    box-shadow: none;
+    background-color: #ffffff00;
 }
 
-div#LanguageColor{
-    width: 12px;
-    height: 12px;
-    margin-right: 3px;
-    border-radius: 10px;
+#self div div div div{
+    margin-right: 33px;
 }
 
-#stats {
+#self div div div div:hover{
+    text-shadow: 0px 0px 10px #ae00ff;
+}
+
+#self div div div p{
+    display: flex;
+    vertical-align: middle;
+    font-size: 18px;
+    margin-left: 3px;
+}
+
+svg#star {
+    fill: rgb(255, 208, 0);
+}
+
+svg#fork{
+    fill: rgb(128, 128, 128);
+
+}
+
+
+div#activity{
+    margin-top: 25rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+/* 
+#activity div{
+
+} */
+
+#activity div h2{
+    display: inline-block;
+    margin-left: 5%;
+}
+
+
+
+/* #stats {
     color: #fff;
 }
 
 #stats h2{
     font-size: 30px;
-}
+} */
 /*
 @media screen and (max-width: 480px) and (max-height: 900px){   
     #intro h1{

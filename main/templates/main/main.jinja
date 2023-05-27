@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+{% load static %}
+{% load custom_tags %}
+<html lang="ru">
+	<head>
+		<link rel="stylesheet" href="https://fonts.cdnfonts.com/css/cascadia-code">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+		<link rel="icon" href="https://cdn.discordapp.com/avatars/645530866663161856/80e66dbaf555025529f3772e44632557.webp?size=512">
+		<meta charset="utf-8"/>
+		<title>NoneType4Name.</title>
+	</head>
+	<body>
+    	<div id="main">
+            <div id="intro">
+				<h1>Hello, i'm NoneType4Name.</h1>
+				<h2><span style="color: #882b2b">\t</span>Self-taught software enginee.<span style="color: #ffd000">\n</span></h2>
+				<h2><span style="color: #882b2b">\t</span>Yong programmer/developer<span style="color: #ffd000">\n</span></h2>
+				<h2><span style="color: #882b2b">\t</span>2.5 years of experience in IT<span style="color: #ffd000">\n</span></h2>
+			</div>
+
+			<div id="skils">
+			<table>
+				<caption><h2>I know, how to work with</h2></caption>
+				<tbody>
+					<tr>
+						<th><span>Discipline</span></th>
+						<th><span>Modifications</span></th>
+					</tr>
+					<tr>
+						<td><span>Python</span></td>
+						<td><ul>
+						<li><span>3.9</span></li>
+						<li><span>3.8</span></li>
+						</ul></td>
+					</tr>
+					<tr>
+						<td><span>C++</span></td>
+						<td><ul>
+							<li><span>Clang</span></li>
+						</ul></td>
+					</tr>
+					<tr>
+						<td><span>ASM</span></td>
+						<td><ul>
+							<li><span>NASM</span></li>
+							<li><span>x86</span></li>
+						</ul></td>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+
+            <div id="self">
+                <h2>My projects</h2>
+				<div>
+					{% for rep in pins %}
+						<div onclick="window.open('{{ rep.url }}', '_blank')">
+							<h3>{{ rep.name }}</h3>
+							<p>{{ rep.description }}</p>
+							<div>
+								<div onclick="window.open('{{ rep.url }}/search?l={{ rep.language }}', '_blank')">
+									<span style="background-color:{{ rep.language_color }}; border-radius: 100%; width: 16px; height:16px;"></span>
+									<p>{{ rep.language }}</p>
+									</div>
+								{% if rep.stars %}
+								<div onclick="window.open('{{ rep.url }}/stargazers', '_blank')">
+									<svg role="img" height="20" viewBox="0 -1 16 16" version="1.1" width="20" data-view-component="true" id="star">
+										<path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Zm0 2.445L6.615 5.5a.75.75 0 0 1-.564.41l-3.097.45 2.24 2.184a.75.75 0 0 1 .216.664l-.528 3.084 2.769-1.456a.75.75 0 0 1 .698 0l2.77 1.456-.53-3.084a.75.75 0 0 1 .216-.664l2.24-2.183-3.096-.45a.75.75 0 0 1-.564-.41L8 2.694Z"></path>
+									</svg>
+									<p>{{ rep.stars }}</p>
+								</div>
+								{% endif %}
+
+								{% if rep.forks %}
+								<div onclick="window.open('{{ rep.url }}/forks', '_blank')">
+									<svg role="img" height="20" viewBox="0 -1 16 16" version="1.1" width="20" data-view-component="true" id="fork">
+										<path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0ZM5 3.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm6.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm-3 8.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"></path>
+									</svg>
+									<p>{{ rep.forks }}</p>
+								</div>
+								{% endif %}
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+            </div>
+			<div id="activity">
+				<div>
+					<h2>At the moment i
+					<h3 id="action">
+					{% for act in activity.data.activities%}
+						{% if act.id == '839c60ae475401f2'%}
+							{% set act as vscode %}
+							{{ "use" }}
+							<h3 id="vscode">{{ act.name }}</h3>
+							{% if act.details != 'Idling'%}
+								{{"and"}}
+								<h3 id="file">{{act.details|exec:".replace('E', 'e').replace('\n','')+'.'"}}</h3>
+							{% endif %}
+						{% endif %}
+					{% endfor %}
+					{% if not vscode is define %}
+						{% if activity.data.activities.1 %}
+							{{activity.data.activities.1}}
+						{% else %}
+							{{'do nothing.'}}
+						{% endif %}
+					{% endif %}
+					</h3>
+					</h2>
+
+				</div>
+			</div>
+<!--            <div id="stats">
+                <h2>Some statistic</h2>
+            </div> -->
+        </div>
+	</body>
+</html>
