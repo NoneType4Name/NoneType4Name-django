@@ -275,6 +275,8 @@ svg#fork{
 
 div#activity{
     margin-top: 50px;
+    margin-left: 5%;
+    width: 90%;
 }
 
 #activity div{
@@ -291,17 +293,53 @@ span#action{
     color:rgb(255, 0, 0)
 }
 
-#vscode{
+div#vscode{
+    position: relative;
     color: rgb(37, 174, 243);
+    opacity: 1;
+    transition: all .5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+}
+
+div#vscode:hover{
+    opacity: 1;
+}
+
+#vscode > img{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: -50px;
+    left: 0px;
+}
+#vscode > span > span{
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top:0;
+    width: 100%;
+    color: inherit;
+    transition: all .5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+#vscode>span:hover > span{
+    opacity: 1;
+    left: 50px;
+    top: -100%
+}
+
+#vscode:hover > img{
+    opacity: 1;
 }
 
 /* #vscode{
 } */
 
 
-#vscode:hover{
+/* #vscode:hover{
+
     background-image: var(--bg-image);
-}
+} */
 
 
 span#file{

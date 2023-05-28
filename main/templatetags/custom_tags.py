@@ -15,4 +15,7 @@ def set(val):
 @register.filter('to_strtime')
 def to_strtime(t):
     t = datetime.timedelta(seconds=time.time()-int(t)/1000)
-    return (f'days:{t.days}') if t.days else ''+'{}:{}:{}'.format(t.seconds//3600, (t.seconds//60)%60, t.seconds%60)
+    return ((f'{t.days} day{"s" if t.days-1 else ""} ') if t.days else '')+" ".join(
+                        (("0" if not (t.seconds//3600//10) else "") +(str(t.seconds//3600)+"h") if t.seconds//3600 else "",
+                        (("0" if not (t.seconds//60)%60//10 else "")+str((t.seconds//60)%60)+"m") if (t.seconds//60)%60 else "",
+                        ("0" if not t.seconds%60//10 else "")+str(t.seconds%60)+"s"))
