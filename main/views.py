@@ -21,5 +21,14 @@ def index(req):
             'stars': _GetCount(r, 'octicon-star'),
             'forks': _GetCount(r, 'octicon-repo-forked'),
                    }, pins))
+    acts = json.loads(requests.get('https://api.lanyard.rest/v1/users/645530866663161856').text)
+    vscode = tuple(a for a in acts['data']['activities'] if 'assets' in a)
+    vscode = vscode[0] if vscode else None
+    
+    langs_page = bs(requests.get('https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=Nonetype4name').text, 'html.parser').find('g', {'data-testid':'main-card-body'})
+    # langs = dict([l.text, l.findNextSibling().text] for l in langs_page.find_all('text', {'data-testid':'lang-name'}))
+    
     return render(req, 'main/main.jinja', {'pins':data,
-                                           'activity':json.loads(requests.get('https://api.lanyard.rest/v1/users/645530866663161856').text)})
+                                           'activity':json.loads(requests.get('https://api.lanyard.rest/v1/users/645530866663161856').text),
+                                           'vscode':vscode,
+                                           'most_lang':dict([l.text, [(l.findNextSibling().text), str(float(l.findNextSibling().text[:-1])+2).replace(',','.'), l.parent.find('rect', {'data-testid':'lang-progress'}).attrs['fill']]] for l in langs_page.find_all('text', {'data-testid':'lang-name'}))})

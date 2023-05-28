@@ -118,10 +118,15 @@ div#skils{
 #skils td{
     border-bottom: #1eff00 solid 1px;
     border-right: #ffffff solid 1px;
+}
+
+#skils td div div{
     text-indent: 5%;
     font-size: 23px;
     padding-top: 10px;
     padding-bottom: 5px;
+    /* height: 100%;
+    width: 100%; */
 }
 
 #skils td:hover{
@@ -132,7 +137,7 @@ div#skils{
     }
 }
 
-#skils ul{
+/* #skils ul{
     list-style: none;
 }
 
@@ -143,7 +148,7 @@ div#skils{
 }
 #skils li::after{
     content: ';';
-}
+} */
 
 /* #skils ul{
     list-style: none;
@@ -175,7 +180,7 @@ div#skils{
 
 
 div#self{
-    margin-top: 10rem;
+    margin-top: 50px;
 }
 
 #self div{
@@ -280,7 +285,7 @@ div#activity{
 
 } */
 
-#activity div h2{
+#activity span{
     display: inline-block;
     margin-left: 5%;
 }

@@ -24,28 +24,17 @@
 				<tbody>
 					<tr>
 						<th><span>Discipline</span></th>
-						<th><span>Modifications</span></th>
+						<th><span>Used</span></th>
 					</tr>
+					{% for l, l_T in most_lang.items %}
 					<tr>
-						<td><span>Python</span></td>
-						<td><ul>
-						<li><span>3.9</span></li>
-						<li><span>3.8</span></li>
-						</ul></td>
+						<td><span style="color: {{ l_T.2 }}">{{l}}</span></td>
+						<td>
+						<div style="background: linear-gradient(90deg, {{l_T.2}} {{l_T.0}}, rgba(255,255,255,0) {{l_T.1}}%, rgba(255,255,255,0) 100%);"><div>
+							<span>{{l_T.0}}</span>
+						</div></div></td>
 					</tr>
-					<tr>
-						<td><span>C++</span></td>
-						<td><ul>
-							<li><span>Clang</span></li>
-						</ul></td>
-					</tr>
-					<tr>
-						<td><span>ASM</span></td>
-						<td><ul>
-							<li><span>NASM</span></li>
-							<li><span>x86</span></li>
-						</ul></td>
-					</tr>
+					{% endfor %}
 				</tbody>
 			</table>
 			</div>
@@ -86,28 +75,31 @@
             </div>
 			<div id="activity">
 				<div>
-					<h2>At the moment i
-					<h3 id="action">
+					<span>At the moment i
+					<span id="action">
 					{% for act in activity.data.activities%}
-						{% if act.id == '839c60ae475401f2'%}
-							{% set act as vscode %}
+						{% if act.assets %}
 							{{ "use" }}
-							<h3 id="vscode">{{ act.name }}</h3>
+							<span id="vscode">{{ act.name }}</span>
 							{% if act.details != 'Idling'%}
 								{{"and"}}
-								<h3 id="file">{{act.details|exec:".replace('E', 'e').replace('\n','')+'.'"}}</h3>
+								<span id="file">{{act.details|eval:".replace('E', 'e').replace('\n','')+'.'"}}</span>
 							{% endif %}
 						{% endif %}
 					{% endfor %}
-					{% if not vscode is define %}
+					{% if not vscode %}
 						{% if activity.data.activities.1 %}
-							{{activity.data.activities.1}}
+							{{ "use" }}
+							<span id="other">{{activity.data.activities.1.name}}</span>
+							{{'elapsed'}}
+							<span id="elaps">{{}}</span>
+							{{'since the start editing'}}
 						{% else %}
 							{{'do nothing.'}}
 						{% endif %}
 					{% endif %}
-					</h3>
-					</h2>
+					</span>
+					</span>
 
 				</div>
 			</div>
