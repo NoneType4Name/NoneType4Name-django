@@ -271,26 +271,49 @@ svg#star {
 
 svg#fork{
     fill: rgb(128, 128, 128);
-
 }
-
 
 div#activity{
-    margin-top: 25rem;
-    display: flex;
-    flex-wrap: wrap;
+    margin-top: 50px;
 }
-/* 
-#activity div{
 
-} */
+#activity div{
+    display: inline-block;
+
+}
 
 #activity span{
-    display: inline-block;
-    margin-left: 5%;
+    margin: 0px;
+    font-size: 30px;
+}
+
+span#action{
+    color:rgb(255, 0, 0)
+}
+
+#vscode{
+    color: rgb(37, 174, 243);
+}
+
+/* #vscode{
+} */
+
+
+#vscode:hover{
+    background-image: var(--bg-image);
 }
 
 
+span#file{
+    color:#ffae00
+}
+
+span#elaps{
+    font-size: 24px;
+    font-family: 'Cascadia Mono';
+    letter-spacing: 5px;
+    color: gray;
+}
 
 /* #stats {
     color: #fff;
@@ -330,5 +353,3 @@ div#activity{
     0%{opacity: 0;}
     100%{opacity: 1;}
 }
-
-

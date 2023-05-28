@@ -4,6 +4,7 @@
 <html lang="ru">
 	<head>
 		<link rel="stylesheet" href="https://fonts.cdnfonts.com/css/cascadia-code">
+		<link rel="stylesheet" href="https://fonts.cdnfonts.com/css/cascadia-mono">
 		<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 		<link rel="icon" href="https://cdn.discordapp.com/avatars/645530866663161856/80e66dbaf555025529f3772e44632557.webp?size=512">
 		<meta charset="utf-8"/>
@@ -75,15 +76,18 @@
             </div>
 			<div id="activity">
 				<div>
-					<span>At the moment i
-					<span id="action">
+					<span>in a moment
+					<span id="action">i
 					{% for act in activity.data.activities%}
 						{% if act.assets %}
 							{{ "use" }}
-							<span id="vscode">{{ act.name }}</span>
+							<div id="vscode" style="--bg-image: url('https://cdn.discordapp.com/app-assets/{{act.application_id}}/{{act.assets.small_image}}.png');">{{ act.name }}</div>
 							{% if act.details != 'Idling'%}
 								{{"and"}}
 								<span id="file">{{act.details|eval:".replace('E', 'e').replace('\n','')+'.'"}}</span>
+								{{'elapsed'}}
+								<span id="elaps">{{ act.timestamps.start|to_strtime}}</span>
+								{{'since the start.'}}
 							{% endif %}
 						{% endif %}
 					{% endfor %}
@@ -91,9 +95,6 @@
 						{% if activity.data.activities.1 %}
 							{{ "use" }}
 							<span id="other">{{activity.data.activities.1.name}}</span>
-							{{'elapsed'}}
-							<span id="elaps">{{}}</span>
-							{{'since the start editing'}}
 						{% else %}
 							{{'do nothing.'}}
 						{% endif %}
