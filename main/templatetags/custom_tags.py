@@ -1,6 +1,7 @@
 from django import template 
 import time
 import datetime
+import requests
 register = template.Library()
 
 @register.filter(name='eval')
@@ -11,6 +12,14 @@ def exec_replace(val, args):
 @register.simple_tag(name='set')
 def set(val):
     return val
+
+@register.filter(name='is_repos')
+def is_repos(ws):
+    rq = requests.get('https://github.com/NoneType4Name/'+ws)
+    if rq.status_code == 200:
+        return rq.url
+    return False
+
 
 @register.filter('to_strtime')
 def to_strtime(t):

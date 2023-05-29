@@ -158,7 +158,6 @@ div#self{
 #self h2 {
     text-align: center;
     margin-bottom: 1rem;
-    left: 50vw;
 }
 
 #self div div{
@@ -188,16 +187,11 @@ div#self{
     box-shadow: 0px 0px 30px #fff;
 }
 
-#self div div h3{
+#self div div p.name{
     display: inline-block;
-    word-wrap: break-word;
+     ;
     font-size: 20px;
 }
-
-/* #self div div p{
-    font-weight: 300;
-    margin-top: 10px;
-} */
 
 #self div div div{
     background-color: #ffffff00;
@@ -242,35 +236,155 @@ svg#fork{
 
 div#activity{
     margin-top: 50px;
-    margin-left: 5%;
-    width: 90%;
 }
 
 #activity div{
     display: inline-block;
-
 }
 
 #activity span{
     margin: 0px;
-    font-size: 30px;
+    font-size: 30px;;
 }
 
-span#action{
+#activity{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;   
+    align-content: center;
+}
+#project-box{
+}
+
+#project-box div{
+    display: flex;
+}
+
+#project{
+    display: flex;
+    flex-wrap: wrap;
+    word-wrap: break-all;
+    background-color: #222222;
+    justify-content: normal;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    align-items: baseline;
+    width: auto;
+    height: 110px;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 0px 0px 10px #fff;
+    border: #ffffff00 solid 1px;
+    border-radius: 10px;
+    /* flex: 0px 0px; */
+}
+
+#project:hover{
+    border: #fff solid 1px;
+    box-shadow: 0px 0px 30px #fff;
+}
+
+#project div {
+    width: auto;
+    height: auto;
+    background-color: #ffffff00;
+    padding: 0px;
+    box-shadow: none;
+    border: none;
+    border-radius: 0px;
+    margin: 0px;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+#project div:hover{
+    border: none;
+    box-shadow: none;
+    background-color: #ffffff00;
+}
+
+#project div p{
+    display: flex;
+    vertical-align: middle;
+    font-size: 18px;
+    margin-left: 3px;
+}
+
+#project .disable{
+    position: relative;
+    padding: 5px;
+    border-radius: 5px;
+    color: #fff;
+    background-color: grey;
+    border: none;
+    cursor: not-allowed;
+}
+#project button::after {
+    opacity: 0;
+    width: max-content;
+    color: #fff;
+    background-color: rgba(77, 75, 75, 0.524);
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1em;
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+
+#project button.disable::after{
+    content: "Приватный репозиторий.";
+}
+
+#project button.enable::after{
+    content: attr(ws);
+}
+
+#project button:active{
+    border: none;
+}
+#project button:hover::after {
+    opacity: 1;
+}
+
+#project .enable{
+    position: relative;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    background-color: rgb(37, 169, 63);
+    cursor: pointer;
+}
+
+#project img{
+    height: 100%;
+    border-radius: 10px;
+}
+
+#action{
     color:rgb(255, 0, 0)
 }
 
-div#vscode{
+#vscode{
     color: #25aef3;
 }
 
-div#file{
+#file{
     color:#ffae00;
 }
 
-div.pop-up{
+/* div.pop-up{
     position: relative;
-    /* transition: all .5s cubic-bezier(0.25, 0.46, 0.45, 0.94); */
+    transition: all .5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .pop-up > span{
@@ -326,7 +440,7 @@ div.pop-up{
 
 .pop-up:hover > img{
     opacity: 1;
-}
+} */
 
 /* #vscode{
 } */
@@ -338,7 +452,7 @@ div.pop-up{
 } */
 
 
-span#elaps{
+#elaps{
     font-size: 24px;
     font-family: 'Cascadia Mono';
     letter-spacing: 5px;

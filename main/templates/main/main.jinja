@@ -45,7 +45,7 @@
 				<div>
 					{% for rep in pins %}
 						<div onclick="window.open('{{ rep.url }}', '_blank')">
-							<h3>{{ rep.name }}</h3>
+							<p class="name">{{ rep.name }}</p>
 							<p>{{ rep.description }}</p>
 							<div>
 								<div onclick="window.open('{{ rep.url }}/search?l={{ rep.language }}', '_blank')">
@@ -75,46 +75,28 @@
 				</div>
             </div>
 			<div id="activity">
-				<div>
-					<span>in a moment
-					<span id="action">i
+				<span>in a moment</span>
+				<div id="project-box">
 					{% for act in activity.data.activities%}
-						{% if act.assets %}
-							{{ "use" }}
-							<div id="vscode" class="pop-up">
-								<span>{{ act.name }}</span>
-								<span id="hiden">{{ act.name }}</span>
-								<img src="https://cdn.discordapp.com/app-assets/{{act.application_id}}/{{act.assets.small_image}}.png">
+						{% if act.assets and act.name == 'Visual Studio Code' %}
+							{% with act.state|eval:".split(': ')[1]" as ws %}
+							<div id="project">
+								<img src="https://cdn.discordapp.com/app-assets/{{act.application_id}}/{{act.assets.large_image}}.png">
+								<div><h3 id="vscode">{{act.name}}</h3></div>
+								<div><p id="elaps">{{act.timestamps.start|to_strtime}}</p><p id="file">{{act.details|eval:".replace('E', 'e').replace('\n','')+'.'"}}</p></div>
+								{% with ws|is_repos as url %}
+								{% if url %}
+									<div><button class="enable" ws={{ws}} onclick="window.open('{{ url }}', '_blank')">View repository</p></div>
+								{% else %}
+									<div><button class="disable">View repository</p></div>
+								{% endif %}
+								{% endwith %}
 							</div>
-							{% if act.details != 'Idling'%}
-								{{"and"}}
-								<div id="file" class="pop-up">
-									<span>{{act.details|eval:".replace('E', 'e').replace('\n','')+'.'"}}</span>
-									<span id="hiden">{{act.details|eval:".replace('E', 'e').replace('\n','')+'.'"}}</span>
-									<img src="https://cdn.discordapp.com/app-assets/{{act.application_id}}/{{act.assets.large_image}}.png">
-								</div>
-								{{'elapsed'}}
-								<span id="elaps">{{ act.timestamps.start|to_strtime}}</span>
-								{{'since the start.'}}
-							{% endif %}
+							{% endwith %}
 						{% endif %}
 					{% endfor %}
-					{% if not vscode %}
-						{% if activity.data.activities.1 %}
-							{{ "use" }}
-							<span id="other">{{activity.data.activities.1.name}}</span>
-						{% else %}
-							{{'do nothing.'}}
-						{% endif %}
-					{% endif %}
-					</span>
-					</span>
-
 				</div>
 			</div>
-<!--            <div id="stats">
-                <h2>Some statistic</h2>
-            </div> -->
         </div>
 	</body>
 </html>
