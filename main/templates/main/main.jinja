@@ -81,14 +81,18 @@
 					{% for act in activity.data.activities%}
 						{% if act.assets %}
 							{{ "use" }}
-							<div id="vscode">
-							{{ act.name }}
-							<span>{{ act.name }}<span>{{ act.name }}</span></span>
-							<img src="https://cdn.discordapp.com/app-assets/{{act.application_id}}/{{act.assets.small_image}}.png">
+							<div id="vscode" class="pop-up">
+								<span>{{ act.name }}</span>
+								<span id="hiden">{{ act.name }}</span>
+								<img src="https://cdn.discordapp.com/app-assets/{{act.application_id}}/{{act.assets.small_image}}.png">
 							</div>
 							{% if act.details != 'Idling'%}
 								{{"and"}}
-								<span id="file">{{act.details|eval:".replace('E', 'e').replace('\n','')+'.'"}}</span>
+								<div id="file" class="pop-up">
+									<span>{{act.details|eval:".replace('E', 'e').replace('\n','')+'.'"}}</span>
+									<span id="hiden">{{act.details|eval:".replace('E', 'e').replace('\n','')+'.'"}}</span>
+									<img src="https://cdn.discordapp.com/app-assets/{{act.application_id}}/{{act.assets.large_image}}.png">
+								</div>
 								{{'elapsed'}}
 								<span id="elaps">{{ act.timestamps.start|to_strtime}}</span>
 								{{'since the start.'}}

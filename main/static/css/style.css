@@ -31,7 +31,14 @@ body{
     /* border: 3px solid #ff0303; */
 }
 
-
+@-webkit-keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+    }
+@keyframes fadeIn {
+0% {opacity: 0;}
+100% {opacity: 1;}
+}
 
 div#intro{
     width: 100%;
@@ -46,7 +53,10 @@ div#intro{
 #intro * {
     white-space:pre-wrap;
     position: relative;
+    -webkit-animation-name: fadeIn;
+animation-name: fadeIn;
 }
+
 
 #intro h1{
     color: rgba(255, 255, 255);
@@ -125,8 +135,6 @@ div#skils{
     font-size: 23px;
     padding-top: 10px;
     padding-bottom: 5px;
-    /* height: 100%;
-    width: 100%; */
 }
 
 #skils td:hover{
@@ -136,48 +144,6 @@ div#skils{
         background-color: var(--background-color); 
     }
 }
-
-/* #skils ul{
-    list-style: none;
-}
-
-#skils li{
-    float: left;
-    margin-right: 10px;
-
-}
-#skils li::after{
-    content: ';';
-} */
-
-/* #skils ul{
-    list-style: none;
-    overflow: auto;
-}
-
-#skils li ul{
-    list-style: ' └──';
-}
-
-#skils li ul li{
-    float: unset;
-}
-
-@property --tag-depth {
-    syntax: "<integer>";
-    inherits: true;
-    initial-value: 0;
-}
-
-#skils li{
-    font-size: 24px;
-    margin-right: 10px;
-    /* --tag-depth: calc((--tag-depth) + 1);
-    margin-top: calc(10px * var(--tag-depth)); */
-    /* margin-top: 10px */
-/* } */
-
-
 
 div#self{
     margin-top: 50px;
@@ -196,6 +162,7 @@ div#self{
 }
 
 #self div div{
+    word-wrap: break-all;
     background-color: #222222;
     justify-content: normal;
     display: flex;
@@ -222,9 +189,9 @@ div#self{
 }
 
 #self div div h3{
+    display: inline-block;
+    word-wrap: break-word;
     font-size: 20px;
-    /* margin-top: 3%;
-    margin-left: 3%; */
 }
 
 /* #self div div p{
@@ -294,41 +261,70 @@ span#action{
 }
 
 div#vscode{
+    color: #25aef3;
+}
+
+div#file{
+    color:#ffae00;
+}
+
+div.pop-up{
     position: relative;
-    color: rgb(37, 174, 243);
-    opacity: 1;
-    transition: all .5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-
+    /* transition: all .5s cubic-bezier(0.25, 0.46, 0.45, 0.94); */
 }
 
-div#vscode:hover{
+.pop-up > span{
+    color: inherit;
     opacity: 1;
+    transition: opacity 0s .5s;
+}
+.pop-up:hover > span{
+    opacity: 0;
+    transition: opacity 0s;
 }
 
-#vscode > img{
-    width: 50px;
-    height: 50px;
+
+.pop-up > img{
     position: absolute;
+    width: 0;
+    height: 0;
     top: -50px;
     left: 0px;
+    opacity: 0;
+    transition: opacity 0s ;
 }
-#vscode > span > span{
+.pop-up:hover > img{
+    opacity: 1;
+    width: 50px;
+    height: 50px;
+    transition: opacity 1s .1s ease;
+    box-shadow: 0px 0px 20px #ffffff;
+    border-radius: 10px;
+}
+
+.pop-up span#hiden{
     opacity: 0;
     position: absolute;
     left: 0;
     top:0;
-    width: 100%;
     color: inherit;
-    transition: all .5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all .5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0s .5s;
+    white-space:pre-wrap;
+
 }
 
-#vscode>span:hover > span{
+.pop-up:hover > span#hiden{
     opacity: 1;
     left: 50px;
-    top: -100%
+    top: -100%;
+    transition: all .5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0s;
+    box-shadow: 0px 0px 20px #ffffff;
+    border-radius: 0 10px 10px 10px;
+    background-color: #0f100f;
+
 }
 
-#vscode:hover > img{
+.pop-up:hover > img{
     opacity: 1;
 }
 
@@ -341,10 +337,6 @@ div#vscode:hover{
     background-image: var(--bg-image);
 } */
 
-
-span#file{
-    color:#ffae00
-}
 
 span#elaps{
     font-size: 24px;
