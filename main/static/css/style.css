@@ -34,10 +34,11 @@ body{
 @-webkit-keyframes fadeIn {
     0% {opacity: 0;}
     100% {opacity: 1;}
-    }
+}
+
 @keyframes fadeIn {
-0% {opacity: 0;}
-100% {opacity: 1;}
+    0% {opacity: 0;}
+    100% {opacity: 1;}
 }
 
 div#intro{
@@ -189,7 +190,6 @@ div#self{
 
 #self div div p.name{
     display: inline-block;
-     ;
     font-size: 20px;
 }
 
@@ -254,11 +254,12 @@ div#activity{
     align-items: center;   
     align-content: center;
 }
-#project-box{
-}
+
 
 #project-box div{
+    /* display: flex; */
     display: flex;
+    /* flex-direction: row */
 }
 
 #project{
@@ -270,15 +271,15 @@ div#activity{
     flex-direction: column;
     -webkit-box-pack: justify;
     justify-content: space-between;
-    align-items: baseline;
-    width: auto;
+    width: 500px;
     height: 110px;
     margin: 10px;
     padding: 10px;
     box-shadow: 0px 0px 10px #fff;
     border: #ffffff00 solid 1px;
     border-radius: 10px;
-    /* flex: 0px 0px; */
+    align-items: flex-start;
+    align-content: flex-start;
 }
 
 #project:hover{
@@ -287,8 +288,6 @@ div#activity{
 }
 
 #project div {
-    width: auto;
-    height: auto;
     background-color: #ffffff00;
     padding: 0px;
     box-shadow: none;
@@ -306,11 +305,14 @@ div#activity{
     background-color: #ffffff00;
 }
 
-#project div p{
-    display: flex;
-    vertical-align: middle;
-    font-size: 18px;
+#project div *{
     margin-left: 3px;
+    vertical-align: middle;
+
+}
+
+#project div p{
+    font-size: 18px;
 }
 
 #project .disable{
